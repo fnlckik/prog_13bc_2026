@@ -2,6 +2,8 @@
 {
     internal abstract class Content
     {
+        // public int id; // adattag, field, mező
+
         protected Content(int id, string title, string description, string genre, int releaseYear, int duration, int ageLimit)
         {
             Id = id;
@@ -13,7 +15,7 @@
             AgeLimit = ageLimit;
         }
 
-        public int Id { get; }
+        public int Id { get; } // tulajdonság, property
         public string Title { get; }
         public string Description { get; }
         public string Genre { get; }

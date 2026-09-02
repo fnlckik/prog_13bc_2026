@@ -31,28 +31,42 @@
                                 creator: "Stan Lee",
                                 isOngoing: false);
             Console.WriteLine($"Sorozat címe: {series.Title}");
+            Console.WriteLine($"Epizódok száma: {series.Episodes.Count}");
 
             Episode ep1 = new(id: 1,
-                              seriesId: 1,
+                              seriesId: 2,
                               title: "A gyík éjszakája (1. rész)",
                               season: 1,
                               episodeNumber: 1,
                               duration: 21,
                               releaseDate: new DateTime(1994, 11, 19));
             Episode ep2 = new(id: 2,
-                              seriesId: 1,
+                              seriesId: 2,
                               title: "A Skorpió csípése",
                               season: 1,
                               episodeNumber: 6,
                               duration: 20,
                               releaseDate: new DateTime(1995, 3, 11));
             Episode ep3 = new(id: 3,
-                              seriesId: 1,
+                              seriesId: 2,
                               title: "Az Igazságosztó közbelép",
                               season: 2,
                               episodeNumber: 7,
                               duration: 23,
                               releaseDate: new DateTime(1995, 11, 4));
+            //series.Episodes.Add(ep1);
+            //series.Episodes.Add(ep2);
+            //series.Episodes.Add(ep3);
+            series.AddEpisode(ep1);
+            series.AddEpisode(ep2);
+            series.AddEpisode(ep3);
+            series.Episodes.Clear();
+            Console.WriteLine($"Epizódok száma: {series.Episodes.Count}");
+            Console.WriteLine("Epizódok címei:");
+            foreach (Episode ep in series.Episodes)
+            {
+                Console.WriteLine($"\t{ep.Title}");
+            }
         }
     }
 }
