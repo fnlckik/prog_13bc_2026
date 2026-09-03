@@ -77,6 +77,40 @@
 
             Console.WriteLine($"Évadok száma: {series.Seasons}");
             Console.WriteLine($"Sorozat hossza: {series.GetTotalDuration()}");
+
+            Film film2 = new(id: 3,
+                             title: "Eredet",
+                             description: "Tolvajok, akik álmokba hatolva lopnak gondolatokat",
+                             genre: "sci-fi",
+                             releaseYear: 2010,
+                             duration: 148,
+                             ageLimit: 16,
+                             director: "Christopher Nolan",
+                             actors,
+                             budget: 160,
+                             revenue: 836);
+
+            Film film3 = new(id: 4,
+                             title: "Pókember: Vadiúj nap",
+                             description: "Pókember új fejezetbe kezdi meg életét és szuperhős karrierjét",
+                             genre: "akció",
+                             releaseYear: 2026,
+                             duration: 140,
+                             ageLimit: 12,
+                             director: "Jon Watts",
+                             actors,
+                             budget: 200,
+                             revenue: 950);
+
+            Series series2 = new(id: 5,
+                                 title: "Agymenők",
+                                 description: "Két zseniális fizikus és barátaik mindennapjai",
+                                 genre: "vígjáték",
+                                 releaseYear: 2007,
+                                 ageLimit: 12,
+                                 duration: 22,
+                                 creator: "Chuck Lorre",
+                                 isOngoing: false);
         }
     }
 }
