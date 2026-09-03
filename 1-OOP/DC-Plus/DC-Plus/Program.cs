@@ -57,16 +57,26 @@
             //series.Episodes.Add(ep1);
             //series.Episodes.Add(ep2);
             //series.Episodes.Add(ep3);
-            series.AddEpisode(ep1);
-            series.AddEpisode(ep2);
-            series.AddEpisode(ep3);
+            //series.AddEpisode(ep1);
+            //series.AddEpisode(ep2);
+            //series.AddEpisode(ep3);
+            series.AddEpisodes(ep1, ep2, ep3);
             series.Episodes.Clear();
             Console.WriteLine($"Epizódok száma: {series.Episodes.Count}");
             Console.WriteLine("Epizódok címei:");
             foreach (Episode ep in series.Episodes)
             {
-                Console.WriteLine($"\t{ep.Title}");
+                Console.WriteLine($"\t{ep}");
             }
+
+            Console.WriteLine($"Nézettség: {film.ViewCount}");
+            film.Watch();
+            Console.WriteLine($"Nézettség: {film.ViewCount}");
+            Console.WriteLine($"Népszerű-e: {film.IsPopular}");
+            Console.WriteLine($"Profit: {film.Profit}");
+
+            Console.WriteLine($"Évadok száma: {series.Seasons}");
+            Console.WriteLine($"Sorozat hossza: {series.GetTotalDuration()}");
         }
     }
 }

@@ -21,5 +21,33 @@
         {
             episodes.Add(ep);
         }
+
+        // params: változó számú paraméter megadható
+        public void AddEpisodes(params Episode[] episodes)
+        {
+            foreach (Episode ep in episodes)
+            {
+                AddEpisode(ep);
+            }
+        }
+
+        public int Seasons
+        {
+            get
+            {
+                if (episodes.Count == 0) return 0;
+                return episodes.Max(e => e.Season);
+            }
+        }
+
+        public int GetTotalDuration()
+        {
+            return episodes.Sum(e => e.Duration);
+        }
+
+        public override string GetSummary()
+        {
+            return $"Sorozat: {Title} - Készítő: {Creator}";
+        }
     }
 }

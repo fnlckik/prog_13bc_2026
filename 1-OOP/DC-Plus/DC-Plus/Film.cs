@@ -14,7 +14,14 @@
 
         public string Director { get; }
         public List<string> Actors { get; }
-        public double Budget { get; }
-        public double Revenue { get; }
+        public double Budget { get; } // Kiadás: millióban megadva
+        public double Revenue { get; } // Bevétel
+
+        public double Profit => Revenue - Budget;
+
+        public override string GetSummary()
+        {
+            return $"Film: {Title} - Rendező: {Director}";
+        }
     }
 }

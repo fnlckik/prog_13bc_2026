@@ -1,6 +1,6 @@
 ﻿namespace DC_Plus
 {
-    internal abstract class Content
+    internal abstract class Content : IWatchable
     {
         // public int id; // adattag, field, mező
 
@@ -13,6 +13,7 @@
             ReleaseYear = releaseYear;
             Duration = duration;
             AgeLimit = ageLimit;
+            ViewCount = 0;
         }
 
         public int Id { get; } // tulajdonság, property
@@ -22,5 +23,21 @@
         public int ReleaseYear { get; }
         public int Duration { get; }
         public int AgeLimit { get; }
+
+        public int ViewCount { get; private set; }
+
+        public void Watch()
+        {
+            ViewCount++;
+        }
+
+        public bool IsPopular
+        {
+            get => ViewCount > 1_000_000;
+        }
+
+        // Film: Odüsszeia - Rendező: Christopher Nolan
+        // Sorozat: Pókember - Készítő: Stan Lee
+        public abstract string GetSummary();
     }
 }

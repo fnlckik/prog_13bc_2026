@@ -20,5 +20,11 @@
         public int Season { get; } // 2. évad
         public int EpisodeNumber { get; } // 3. epizód
         public int Duration { get; }
+
+        // "A Skorpió csípése - S1E6"
+        public override string ToString()
+        {
+            return $"{Title} - S{Season:00}E{EpisodeNumber:00}";
+        }
     }
 }
