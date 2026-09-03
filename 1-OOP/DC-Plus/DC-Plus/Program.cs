@@ -111,6 +111,28 @@
                                  duration: 22,
                                  creator: "Chuck Lorre",
                                  isOngoing: false);
+            Console.WriteLine();
+
+            // Polimorfizmus: Ősosztály beli metódus másképp tud viselkedni (különböző implementációkkal rendelkezhet) az alosztályokban.
+            List<Content> contents = [film, series, film2, film3, series2];
+            foreach (Content content in contents)
+            {
+                Console.WriteLine(content.GetSummary());
+            }
+            Console.WriteLine();
+
+            film.AddRating(8);
+            film.AddRating(10);
+            film.AddRating(7);
+            Console.WriteLine($"Átlagos értékelés: {film.AverageRating:0.0}");
+            Console.WriteLine();
+
+            film.Download();
+            Console.WriteLine($"Letöltve? {film.IsDownloaded}");
+            film.DeleteDownload();
+            Console.WriteLine($"Letöltve? {film.IsDownloaded}");
+
+
         }
     }
 }
