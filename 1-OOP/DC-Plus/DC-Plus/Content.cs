@@ -52,7 +52,7 @@ namespace DC_Plus
 
         public void AddRating(int rating)
         {
-            if (rating < 0 || rating > 10) throw new ArgumentOutOfRangeException("Az értékelés 0 és 10 közötti kell legyen.");
+            if (rating < 0 || rating > 10) throw new InvalidRatingException();
             Ratings.Add(rating);
         }
     }

@@ -131,8 +131,6 @@
             Console.WriteLine($"Letöltve? {film.IsDownloaded}");
             film.DeleteDownload();
             Console.WriteLine($"Letöltve? {film.IsDownloaded}");
-
-
         }
     }
 }
