@@ -1,4 +1,6 @@
-﻿namespace DC_Plus
+﻿using DC_Plus.Models;
+
+namespace DC_Plus
 {
     internal class Program
     {
@@ -61,6 +63,7 @@
             //series.AddEpisode(ep2);
             //series.AddEpisode(ep3);
             series.AddEpisodes(ep1, ep2, ep3);
+            //series.AddEpisode(ep1);
             series.Episodes.Clear();
             Console.WriteLine($"Epizódok száma: {series.Episodes.Count}");
             Console.WriteLine("Epizódok címei:");
@@ -131,6 +134,24 @@
             Console.WriteLine($"Letöltve? {film.IsDownloaded}");
             film.DeleteDownload();
             Console.WriteLine($"Letöltve? {film.IsDownloaded}");
+
+            ContentService service = new(contents);
+            Console.WriteLine(service.GetById(2).Title);
+
+            //var x = service.SearchByTitle("er"); // Pókember, Eredet
+            //foreach (var item in x)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+            //Console.WriteLine(String.Join("\t", new int[] { 1, 2, 3 }));
+            Console.WriteLine(String.Join("\n", service.SearchByTitle("er").Select(c => c.Title)));
+            Console.WriteLine(String.Join("\n", service.GetFilms()));
+            Console.Clear();
         }
+
+        //private static Content GetById(List<Content> contents, int id)
+        //{
+        //    return contents.First(c => c.Id == id);
+        //}
     }
 }

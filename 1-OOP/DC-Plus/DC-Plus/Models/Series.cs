@@ -1,4 +1,6 @@
-﻿namespace DC_Plus
+﻿using DC_Plus.Exceptions;
+
+namespace DC_Plus.Models
 {
     internal class Series : Content
     {
@@ -17,8 +19,10 @@
         public List<Episode> Episodes { get => [.. episodes]; } // property (tulajdonság)
         public bool IsOngoing { get; }
 
+        // Clean Code: Egy függvény egy feladat!
         public void AddEpisode(Episode ep)
         {
+            if (episodes.Any(e => e.Season == ep.Season && e.EpisodeNumber == ep.EpisodeNumber)) throw new InvalidEpisodeException();
             episodes.Add(ep);
         }
 

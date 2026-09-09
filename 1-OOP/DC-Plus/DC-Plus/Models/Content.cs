@@ -1,5 +1,7 @@
-﻿
-namespace DC_Plus
+﻿using DC_Plus.Exceptions;
+using DC_Plus.Interfaces;
+
+namespace DC_Plus.Models
 {
     internal abstract class Content : IWatchable, IRateable
     {

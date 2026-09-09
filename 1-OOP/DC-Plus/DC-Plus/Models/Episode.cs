@@ -1,4 +1,4 @@
-﻿namespace DC_Plus
+﻿namespace DC_Plus.Models
 {
     internal class Episode
     {

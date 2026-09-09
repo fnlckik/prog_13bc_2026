@@ -1,4 +1,4 @@
-﻿namespace DC_Plus
+﻿namespace DC_Plus.Exceptions
 {
     internal class InvalidRatingException : ArgumentOutOfRangeException
     {

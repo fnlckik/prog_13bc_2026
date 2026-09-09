@@ -1,4 +1,6 @@
-﻿namespace DC_Plus
+﻿using DC_Plus.Interfaces;
+
+namespace DC_Plus.Models
 {
     internal class Film : Content, IDownloadable
     {
@@ -36,6 +38,11 @@
         public override string GetSummary()
         {
             return $"Film: {Title} - Rendező: {Director}";
+        }
+
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

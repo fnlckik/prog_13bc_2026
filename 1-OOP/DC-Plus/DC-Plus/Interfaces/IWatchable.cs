@@ -1,4 +1,4 @@
-﻿namespace DC_Plus
+﻿namespace DC_Plus.Interfaces
 {
     internal interface IWatchable
     {
