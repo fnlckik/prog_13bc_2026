@@ -135,8 +135,8 @@ namespace DC_Plus
             film.DeleteDownload();
             Console.WriteLine($"Letöltve? {film.IsDownloaded}");
 
-            ContentService service = new(contents);
-            Console.WriteLine(service.GetById(2).Title);
+            ContentService service0 = new(contents);
+            Console.WriteLine(service0.GetById(2).Title);
 
             //var x = service.SearchByTitle("er"); // Pókember, Eredet
             //foreach (var item in x)
@@ -144,9 +144,30 @@ namespace DC_Plus
             //    Console.WriteLine(item.Title);
             //}
             //Console.WriteLine(String.Join("\t", new int[] { 1, 2, 3 }));
-            Console.WriteLine(String.Join("\n", service.SearchByTitle("er").Select(c => c.Title)));
-            Console.WriteLine(String.Join("\n", service.GetFilms()));
+            Console.WriteLine(String.Join("\n", service0.SearchByTitle("er").Select(c => c.Title)));
+            Console.WriteLine(String.Join("\n", service0.GetFilms()));
             Console.Clear();
+
+            ContentService service = new();
+            service.ReadFile("../../../Data/films.csv");
+            service.ReadFile2("../../../Data/series.csv");
+
+            // -------------------------
+            // Delegált: referencia egy függvényre
+            Func<int, bool> Decide = IsEven;
+            Console.WriteLine(Decide(2));
+            Console.WriteLine(Decide(-5));
+            Console.WriteLine(Decide(73));
+        }
+
+        private static bool IsPositive(int n)
+        {
+            return n > 0;
+        }
+
+        private static bool IsEven(int n)
+        {
+            return n % 2 == 0;
         }
 
         //private static Content GetById(List<Content> contents, int id)

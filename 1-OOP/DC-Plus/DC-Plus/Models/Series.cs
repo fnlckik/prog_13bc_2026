@@ -7,8 +7,8 @@ namespace DC_Plus.Models
         private List<Episode> episodes; // field (adattag)
 
         public Series(int id, string title, string description, string genre, int releaseYear, int duration, int ageLimit,
-                      string creator, bool isOngoing)
-               : base(id, title, description, genre, releaseYear, duration, ageLimit)
+                      string creator, bool isOngoing, int viewCount = 0)
+               : base(id, title, description, genre, releaseYear, duration, ageLimit, viewCount)
         {
             Creator = creator;
             episodes = [];
@@ -52,6 +52,24 @@ namespace DC_Plus.Models
         public override string GetSummary()
         {
             return $"Sorozat: {Title} - Készítő: {Creator}";
+        }
+
+        public static Series Parse(string line)
+        {
+            string[] data = line.Split(";");
+            Series series = new(id: int.Parse(data[0]),
+                                title: data[1],
+                                description: data[2],
+                                genre: data[4],
+                                releaseYear: int.Parse(data[3]),
+                                duration: int.Parse(data[6]),
+                                ageLimit: int.Parse(data[5]),
+                                viewCount: int.Parse(data[7]),
+                                creator: data[8],
+                                isOngoing: bool.Parse(data[9]));
+            int[] ratings = data[10].Split('|').Select(int.Parse).ToArray();
+            series.AddRatings(ratings);
+            return series;
         }
     }
 }

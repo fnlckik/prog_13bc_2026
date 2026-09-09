@@ -9,7 +9,7 @@ namespace DC_Plus.Models
         private static int[] validAgeLimits = { 0, 6, 12, 16, 18 };
 
         //if (!validAgeLimits.Any(e => e == ageLimit)) throw new ArgumentException("Érvénytelen korhatár.");
-        protected Content(int id, string title, string description, string genre, int releaseYear, int duration, int ageLimit)
+        protected Content(int id, string title, string description, string genre, int releaseYear, int duration, int ageLimit, int viewCount)
         {
             if (duration < 0) throw new ArgumentException("A játékidő nem lehet negatív.");
             if (!validAgeLimits.Contains(ageLimit)) throw new ArgumentException("Érvénytelen korhatár.");
@@ -20,7 +20,7 @@ namespace DC_Plus.Models
             ReleaseYear = releaseYear;
             Duration = duration;
             AgeLimit = ageLimit; // 0, 6, 12, 16, 18
-            ViewCount = 0;
+            ViewCount = viewCount;
             Ratings = [];
         }
 
@@ -56,6 +56,14 @@ namespace DC_Plus.Models
         {
             if (rating < 0 || rating > 10) throw new InvalidRatingException();
             Ratings.Add(rating);
+        }
+
+        public void AddRatings(int[] ratings)
+        {
+            foreach (int rating in ratings)
+            {
+                AddRating(rating);
+            }
         }
     }
 }
