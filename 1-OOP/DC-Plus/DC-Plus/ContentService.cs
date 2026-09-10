@@ -40,7 +40,7 @@ namespace DC_Plus
 
         // Clean Code: Egy függvény egy feladat!
         // Beolvas + Konvertál + Eltárol
-        public void ReadFile(string path, Func<string, Content> parser)
+        public void ReadFile<T>(string path, Func<string, T> parser, Action<T> store)
         {
             try
             {
@@ -49,8 +49,8 @@ namespace DC_Plus
                 {
                     try
                     {
-                        Content content = parser(line);
-                        contents.Add(content);
+                        T obj = parser(line);
+                        store(obj); // eltároljuk
                     }
                     catch (FormatException)
                     {
@@ -63,6 +63,17 @@ namespace DC_Plus
             {
                 Console.WriteLine($"Hiányzó fájl: {path}");
             }
+        }
+
+        public void AddContent(Content content)
+        {
+            contents.Add(content);
+        }
+
+        public void AddEpisode(Episode ep)
+        {
+            Series series = (Series)GetById(ep.SeriesId);
+            series.AddEpisode(ep);
         }
     }
 }

@@ -164,9 +164,12 @@ namespace DC_Plus
             Hello("#Sanyi");
             Console.Clear();
 
+            // Egy Content-re tudok Object-ként tekinteni.
+            // NODE: Egy Action<Content>-re nem tudok Action<Object>-ként tekinteni.
             ContentService service = new();
-            service.ReadFile("../../../Data/films.csv", Film.Parse);
-            service.ReadFile("../../../Data/series.csv", Series.Parse);
+            service.ReadFile("../../../Data/films.csv", Film.Parse, service.AddContent);
+            service.ReadFile("../../../Data/series.csv", Series.Parse, service.AddContent);
+            service.ReadFile("../../../Data/episodes.csv", Episode.Parse, service.AddEpisode);
         }
 
         private static void WriteFile(string s)
