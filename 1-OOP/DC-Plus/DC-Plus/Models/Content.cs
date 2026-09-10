@@ -65,5 +65,10 @@ namespace DC_Plus.Models
                 AddRating(rating);
             }
         }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

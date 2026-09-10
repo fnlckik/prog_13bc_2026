@@ -40,11 +40,6 @@ namespace DC_Plus.Models
             return $"Film: {Title} - Rendező: {Director}";
         }
 
-        public override string ToString()
-        {
-            return Title;
-        }
-
         public static Film Parse(string line)
         {
             string[] data = line.Split(";");

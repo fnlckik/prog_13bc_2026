@@ -170,6 +170,23 @@ namespace DC_Plus
             service.ReadFile("../../../Data/films.csv", Film.Parse, service.AddContent);
             service.ReadFile("../../../Data/series.csv", Series.Parse, service.AddContent);
             service.ReadFile("../../../Data/episodes.csv", Episode.Parse, service.AddEpisode);
+            service.PrintContent();
+
+            Console.WriteLine(String.Join("\n", service.GetContentsByGenre("Sci-Fi")));
+            Console.WriteLine(String.Join("\n", service.GetTitlesOrdered()));
+            Console.WriteLine(String.Join("\n", service.GetContentsOrderedByYearAndTitle()));
+            Console.WriteLine(service.GetSeriesCount());
+            Console.WriteLine(service.HasMatureContent());
+            Console.WriteLine(service.GetOldestReleaseYear());
+            Console.WriteLine(service.GetNewestFilmByGenre("Háborús"));
+            Console.Clear();
+            Console.WriteLine("--------------------------------------");
+
+            List<List<int>> matrix = [[1, 2], [3], [4, 5, 6]];
+            List<int> lista = matrix.SelectMany(e => e.Select(f => f*f)).ToList();
+            Console.WriteLine(matrix.Count);
+            Console.WriteLine(lista.Count);
+            Console.WriteLine(String.Join(" ", lista));
         }
 
         private static void WriteFile(string s)

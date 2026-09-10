@@ -1,11 +1,10 @@
 ﻿using DC_Plus.Exceptions;
 using DC_Plus.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DC_Plus
 {
     // Service réteg: üzleti logikát végzi
-    internal class ContentService
+    internal partial class ContentService
     {
         private List<Content> contents;
 
@@ -74,6 +73,23 @@ namespace DC_Plus
         {
             Series series = (Series)GetById(ep.SeriesId);
             series.AddEpisode(ep);
+        }
+
+        public void PrintContent()
+        {
+            foreach (Content content in contents)
+            {
+                Console.WriteLine(content.Title);
+                if (content is Series)
+                {
+                    Series series = (Series)content;
+                    List<Episode> episodes = series.Episodes;
+                    foreach (Episode ep in episodes)
+                    {
+                        Console.WriteLine($"\t{ep.Title}");
+                    }
+                }
+            }
         }
     }
 }
