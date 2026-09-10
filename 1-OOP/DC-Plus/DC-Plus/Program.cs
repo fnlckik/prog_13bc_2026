@@ -148,16 +148,36 @@ namespace DC_Plus
             Console.WriteLine(String.Join("\n", service0.GetFilms()));
             Console.Clear();
 
-            ContentService service = new();
-            service.ReadFile("../../../Data/films.csv");
-            service.ReadFile2("../../../Data/series.csv");
-
             // -------------------------
-            // Delegált: referencia egy függvényre
+            // Delegált: referencia egy metódusra
+            // Függvény
             Func<int, bool> Decide = IsEven;
             Console.WriteLine(Decide(2));
             Console.WriteLine(Decide(-5));
             Console.WriteLine(Decide(73));
+            Console.WriteLine();
+
+            // Eljárás
+            Action<string> Hello = WriteConsole;
+            Hello("Heló világ!");
+            Hello("13. évfolyamosak vagyunk");
+            Hello("#Sanyi");
+            Console.Clear();
+
+            ContentService service = new();
+            service.ReadFile("../../../Data/films.csv", Film.Parse);
+            service.ReadFile("../../../Data/series.csv", Series.Parse);
+        }
+
+        private static void WriteFile(string s)
+        {
+            using StreamWriter sw = new("ki.txt", true);
+            sw.WriteLine(s);
+        }
+
+        private static void WriteConsole(string s)
+        {
+            Console.WriteLine(s);
         }
 
         private static bool IsPositive(int n)

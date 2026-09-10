@@ -60,7 +60,6 @@ namespace DC_Plus.Models
                             actors: data[9].Split('|').ToList(),
                             revenue: int.Parse(data[10]),
                             budget: int.Parse(data[11]));
-            //int[] ratings = data[12].Split('|').Cast<int>().ToArray();
             int[] ratings = data[12].Split('|').Select(int.Parse).ToArray();
             film.AddRatings(ratings);
             return film;

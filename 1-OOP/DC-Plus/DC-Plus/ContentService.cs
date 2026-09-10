@@ -40,7 +40,7 @@ namespace DC_Plus
 
         // Clean Code: Egy függvény egy feladat!
         // Beolvas + Konvertál + Eltárol
-        public void ReadFile(string path)
+        public void ReadFile(string path, Func<string, Content> parser)
         {
             try
             {
@@ -49,33 +49,8 @@ namespace DC_Plus
                 {
                     try
                     {
-                        Film film = Film.Parse(line); // Series.Parse(line)
-                        contents.Add(film);
-                    }
-                    catch (FormatException)
-                    {
-                        Console.WriteLine($"Hibás adat: {line}");
-                    }
-                }
-                Console.WriteLine(contents.Count);
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Hiányzó fájl: {path}");
-            }
-        }
-
-        public void ReadFile2(string path)
-        {
-            try
-            {
-                IEnumerable<string> lines = FileReader.ReadLines(path).Skip(1);
-                foreach (string line in lines)
-                {
-                    try
-                    {
-                        Series film = Series.Parse(line); // Series.Parse(line)
-                        contents.Add(film);
+                        Content content = parser(line);
+                        contents.Add(content);
                     }
                     catch (FormatException)
                     {
