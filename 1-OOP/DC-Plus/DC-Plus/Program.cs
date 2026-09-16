@@ -179,14 +179,28 @@ namespace DC_Plus
             Console.WriteLine(service.HasMatureContent());
             Console.WriteLine(service.GetOldestReleaseYear());
             Console.WriteLine(service.GetNewestFilmByGenre("Háborús"));
-            Console.Clear();
             Console.WriteLine("--------------------------------------");
 
-            List<List<int>> matrix = [[1, 2], [3], [4, 5, 6]];
+            List<List<int>> matrix = [[1, 2], [3], [4, 5, 6]]; // [1, 2, 3, 4, 5, 6]
             List<int> lista = matrix.SelectMany(e => e.Select(f => f*f)).ToList();
             Console.WriteLine(matrix.Count);
             Console.WriteLine(lista.Count);
             Console.WriteLine(String.Join(" ", lista));
+
+            List<Episode> episodes = service.GetAllEpisodes();
+            Console.WriteLine(String.Join("\n", episodes));
+            Console.WriteLine(String.Join("\n", service.GetLongEpisodeTitles(45)));
+            Console.WriteLine(service.GetAllRatingsAverage());
+            Console.WriteLine(String.Join("\n", service.GetGenres()));
+            //Dictionary<string, int> d = service.GetContentCountByGenres();
+            //foreach (KeyValuePair<string, int> pair in d)
+            //{
+            //    Console.WriteLine($"{pair.Key} {pair.Value}");
+            //}
+            Console.WriteLine(String.Join("\n", service.GetContentCountByGenres().Select(pair => $"{pair.Key} {pair.Value}")));
+            Console.WriteLine(String.Join("\n", service.GetFirstFilmByDirectors().Select(pair => $"{pair.Key}: {pair.Value}")));
+            Console.Clear();
+            Console.WriteLine(String.Join("\n", service.GetFilmsByViewCount(1_000_000, 10_000_000)));
         }
 
         private static void WriteFile(string s)
