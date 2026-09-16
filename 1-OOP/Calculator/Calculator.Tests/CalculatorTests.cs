@@ -83,5 +83,62 @@ namespace CalculatorApp.Tests
             int result = calc.Add(a, b);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        // ------------------------------------
+
+        public void TryDivide()
+        {
+            calc.Divide(5, 0);
+        }
+
+        // Ha elvégezném az osztást, akkor kivételt kapnék!
+        [Test]
+        public void Divide_Throws_Exception()
+        {
+            Assert.That(() => calc.Divide(5, 0), Throws.Exception);
+        }
+
+        [Test]
+        public void Divide_Throws_DivideByZeroException()
+        {
+            Assert.That(() => calc.Divide(5, 0), Throws.TypeOf<DivideByZeroException>());
+        }
+
+        [Test]
+        public void Divide_Throws_CorrectMessage()
+        {
+            var ex = Assert.Throws<DivideByZeroException>(() => calc.Divide(5, 0));
+            Assert.That(ex.Message, Is.EqualTo("Nem lehet 0-val osztani."));
+        }
+
+        [TestCase(6, 2, 3)]
+        [TestCase(10, 3, 3)]
+        [TestCase(17, 3, 5)]
+        public void Divide_Test(int a, int b, int expected)
+        {
+            int result = calc.Divide(a, b);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        // Boundary Value Analysis (BVA) -> edge case
+        // Minden ekvivalenciaosztályból (3) veszünk ki egy-egy reprezentánst.
+        // + a határokat teszteljük
+        [TestCase(-1)]
+        [TestCase(151)]
+        public void IsAdult_InvalidAge(int age)
+        {
+            Assert.That(() => calc.IsAdult(age), Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [TestCase(0, false)]
+        [TestCase(17, false)]
+        [TestCase(18, true)]
+        [TestCase(19, true)]
+        [TestCase(150, true)]
+        public void IsAdult_Test(int age, bool expected)
+        {
+            bool result = calc.IsAdult(age);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
