@@ -2,7 +2,7 @@
 
 namespace DC_Plus.Models
 {
-    internal class Series : Content
+    public class Series : Content
     {
         private List<Episode> episodes; // field (adattag)
 

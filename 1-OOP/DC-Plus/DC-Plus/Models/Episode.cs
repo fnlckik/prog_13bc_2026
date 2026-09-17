@@ -1,6 +1,6 @@
 ﻿namespace DC_Plus.Models
 {
-    internal class Episode
+    public class Episode
     {
         public Episode(int id, int seriesId, string title, DateTime releaseDate, int season, int episodeNumber, int duration, int viewCount = 0)
         {

@@ -3,7 +3,7 @@ using DC_Plus.Interfaces;
 
 namespace DC_Plus.Models
 {
-    internal abstract class Content : IWatchable, IRateable
+    public abstract class Content : IWatchable, IRateable
     {
         // public int id; // adattag, field, mező
         private static int[] validAgeLimits = { 0, 6, 12, 16, 18 };

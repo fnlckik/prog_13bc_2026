@@ -2,7 +2,7 @@
 
 namespace DC_Plus.Models
 {
-    internal class Film : Content, IDownloadable
+    public class Film : Content, IDownloadable
     {
         public Film(int id, string title, string description, string genre, int releaseYear, int duration, int ageLimit,
                     string director, List<string> actors, double budget, double revenue, int viewCount = 0)
