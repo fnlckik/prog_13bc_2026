@@ -1,20 +1,20 @@
-namespace CalculatorApp.Tests
+﻿namespace CalculatorApp.Tests
 {
-    // ~ Ez az oszt�ly teszteket tartalmaz.
-    [TestFixture] // ma m�r nem k�telez�
+    // ~ Ez az osztály teszteket tartalmaz.
+    [TestFixture] // ma már nem kötelező
     public class CalculatorTests
     {
         private Calculator calc;
 
-        // Minden teszt el�tt lefut.
+        // Minden teszt előtt lefut.
         [SetUp]
         public void Setup()
         {
             calc = new(); // Arrange
         }
 
-        // El�k�sz�t�s, v�grehajt�s, �ll�t�s
-        // AAA minta: Arrange, Act, Assert (kijelent�s, �ll�t�s)
+        // Előkészítés, végrehajtás, állítás
+        // AAA minta: Arrange, Act, Assert (kijelentés, állítás)
         // Classic model VS Constraint model
         [Test]
         public void Square_5_25()
@@ -91,7 +91,7 @@ namespace CalculatorApp.Tests
             calc.Divide(5, 0);
         }
 
-        // Ha elv�gezn�m az oszt�st, akkor kiv�telt kapn�k!
+        // Ha elvégezném az osztást, akkor kivételt kapnék!
         [Test]
         public void Divide_Throws_Exception()
         {
@@ -121,8 +121,8 @@ namespace CalculatorApp.Tests
         }
 
         // Boundary Value Analysis (BVA) -> edge case
-        // Minden ekvivalenciaoszt�lyb�l (3) vesz�nk ki egy-egy reprezent�nst.
-        // + a hat�rokat tesztelj�k
+        // Minden ekvivalenciaosztályból (3) veszünk ki egy-egy reprezentánst.
+        // + a határokat teszteljük
         [TestCase(-1)]
         [TestCase(151)]
         public void IsAdult_InvalidAge(int age)
@@ -137,8 +137,55 @@ namespace CalculatorApp.Tests
         [TestCase(150, true)]
         public void IsAdult_Test(int age, bool expected)
         {
-            bool result = calc.IsAdult(age);
+            bool result = calc.IsAdult(age); // Act
+            Assert.That(result, Is.EqualTo(expected)); // Assert
+        }
+        
+        // Black box technika -> nem ismerjük az implementációt
+        // Mit kell tudnom a függvényről?
+        // Mit csinál (specifikáció) ✅
+        // Milyen a megvalósítás (implementáció) ❌
+        [TestCase(1, "elégtelen")]
+        [TestCase(2, "elégséges")]
+        [TestCase(5, "jeles")]
+        public void GetGrade_Test(int n, string expected)
+        {
+            string result = calc.GetGrade(n);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(0)]
+        [TestCase(6)]
+        public void GetGrade_ThrowsException(int n)
+        {
+            Assert.That(() => calc.GetGrade(n), Throws.TypeOf<ArgumentException>());
+        }
+
+        // White box technika => ismerjük az implementációt
+        // Vigyázat! Ez nem felel meg a BVA-nak még (edge case-ek hiányoznak)
+        // kéne még: 0, 30
+        // branch coverage (100%): minden elágazás minden ága lefut legalább egyszer
+        [TestCase(-5, "hideg")]
+        [TestCase(12, "normál")]
+        [TestCase(37, "meleg")]
+        public void GetTemperature_Test(int temp, string expected)
+        {
+            string result = calc.GetTemperatureType(temp);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        // statement coverage: a függvény minden utasítása lefut legalább egyszer
+        // condition coverage: az elágazás feltételek minden logikai értékét teszteltük
+        [TestCase(18, true, true)] // statement coverage 100%, branch coverage 50%
+        [TestCase(18, false, false)] // branch coverage 100%, condition coverage 50%
+        [TestCase(15, true, false)]
+        [TestCase(15, false, false)] // condition coverage 100%
+        public void CanPlayGTAVI(int age, bool hasGame, bool expected)
+        {
+            bool result = calc.CanPlayGTAVI(age, hasGame);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        // method coverage: minden metódust tesztelni kell
     }
 }
