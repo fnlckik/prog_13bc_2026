@@ -1,0 +1,134 @@
+StudentId;TeacherId;Subject;Value;Date
+21;110;Digitális kultúra;5;2026-09-02
+10;101;Matematika;2;2026-09-12
+21;103;Programozás;1;2026-09-04
+23;110;Digitális kultúra;5;2026-09-05
+9;110;Digitális kultúra;5;2026-09-19
+12;106;Biológia;1;2026-09-19
+10;104;Angol nyelv;1;2026-09-17
+30;110;Digitális kultúra;5;2026-09-19
+1;101;Matematika;2;2026-09-13
+4;102;Magyar nyelv és irodalom;4;2026-09-02
+24;105;Hálózati ismeretek;3;2026-09-05
+3;102;Magyar nyelv és irodalom;5;2026-09-04
+18;110;Digitális kultúra;5;2026-09-03
+19;110;Digitális kultúra;4;2026-09-03
+15;104;Angol nyelv;4;2026-09-17
+10;110;Webprogramozás;4;2026-09-19
+27;102;Magyar nyelv és irodalom;5;2026-09-13
+24;110;Webprogramozás;3;2026-09-12
+23;105;Hálózati ismeretek;5;2026-09-04
+18;103;Programozás;4;2026-09-04
+2;105;Hálózati ismeretek;5;2026-09-02
+4;110;Webprogramozás;5;2026-09-13
+5;110;Webprogramozás;5;2026-09-16
+30;104;Angol nyelv;4;2026-09-13
+19;101;Matematika;5;2026-09-19
+9;106;Biológia;5;2026-09-19
+3;103;Programozás;5;2026-09-03
+16;110;Webprogramozás;2;2026-09-05
+12;103;Programozás;2;2026-09-05
+3;104;Angol nyelv;4;2026-09-05
+8;102;Magyar nyelv és irodalom;1;2026-09-12
+22;105;Hálózati ismeretek;2;2026-09-02
+14;110;Webprogramozás;3;2026-09-17
+16;110;Digitális kultúra;3;2026-09-16
+1;110;Digitális kultúra;2;2026-09-16
+12;110;Digitális kultúra;2;2026-09-02
+10;105;Hálózati ismeretek;2;2026-09-05
+12;104;Angol nyelv;2;2026-09-13
+27;103;Programozás;5;2026-09-05
+11;103;Programozás;4;2026-09-12
+6;104;Angol nyelv;4;2026-09-19
+13;105;Hálózati ismeretek;3;2026-09-02
+18;102;Magyar nyelv és irodalom;1;2026-09-03
+24;110;Digitális kultúra;4;2026-09-03
+5;101;Matematika;3;2026-09-04
+22;110;Webprogramozás;4;2026-09-05
+22;103;Programozás;4;2026-09-04
+14;110;Digitális kultúra;5;2026-09-19
+12;105;Hálózati ismeretek;3;2026-09-12
+11;102;Magyar nyelv és irodalom;4;2026-09-16
+24;103;Programozás;2;2026-09-17
+4;105;Hálózati ismeretek;4;2026-09-13
+25;110;Digitális kultúra;4;2026-09-19
+2;103;Programozás;5;2026-09-12
+27;104;Angol nyelv;1;2026-09-19
+8;104;Angol nyelv;3;2026-09-03
+24;104;Angol nyelv;3;2026-09-05
+30;110;Webprogramozás;4;2026-09-04
+30;106;Biológia;4;2026-09-17
+19;102;Magyar nyelv és irodalom;1;2026-09-19
+28;106;Biológia;3;2026-09-12
+11;106;Biológia;5;2026-09-19
+1;104;Angol nyelv;4;2026-09-19
+30;103;Programozás;4;2026-09-02
+15;102;Magyar nyelv és irodalom;3;2026-09-19
+7;101;Matematika;5;2026-09-19
+14;102;Magyar nyelv és irodalom;3;2026-09-19
+21;104;Angol nyelv;5;2026-09-02
+9;105;Hálózati ismeretek;3;2026-09-13
+22;110;Digitális kultúra;2;2026-09-02
+8;103;Programozás;5;2026-09-04
+16;103;Programozás;3;2026-09-05
+27;110;Webprogramozás;4;2026-09-05
+4;101;Matematika;4;2026-09-17
+13;104;Angol nyelv;2;2026-09-13
+15;110;Webprogramozás;2;2026-09-12
+22;104;Angol nyelv;3;2026-09-04
+14;104;Angol nyelv;5;2026-09-05
+27;101;Matematika;5;2026-09-03
+13;110;Digitális kultúra;4;2026-09-03
+10;103;Programozás;4;2026-09-03
+16;105;Hálózati ismeretek;3;2026-09-02
+21;106;Biológia;2;2026-09-16
+15;101;Matematika;4;2026-09-17
+24;102;Magyar nyelv és irodalom;5;2026-09-05
+4;110;Digitális kultúra;5;2026-09-16
+25;102;Magyar nyelv és irodalom;4;2026-09-16
+4;106;Biológia;5;2026-09-02
+22;102;Magyar nyelv és irodalom;2;2026-09-19
+15;106;Biológia;3;2026-09-02
+2;102;Magyar nyelv és irodalom;4;2026-09-05
+13;106;Biológia;3;2026-09-05
+14;101;Matematika;4;2026-09-16
+26;101;Matematika;3;2026-09-12
+5;106;Biológia;5;2026-09-16
+29;105;Hálózati ismeretek;4;2026-09-12
+13;102;Magyar nyelv és irodalom;3;2026-09-16
+4;103;Programozás;5;2026-09-19
+26;106;Biológia;5;2026-09-04
+21;110;Webprogramozás;4;2026-09-12
+1;105;Hálózati ismeretek;3;2026-09-13
+19;103;Programozás;4;2026-09-03
+18;106;Biológia;3;2026-09-05
+27;106;Biológia;4;2026-09-03
+27;105;Hálózati ismeretek;4;2026-09-16
+12;102;Magyar nyelv és irodalom;4;2026-09-03
+14;103;Programozás;5;2026-09-03
+12;110;Webprogramozás;1;2026-09-02
+19;105;Hálózati ismeretek;5;2026-09-04
+20;103;Programozás;4;2026-09-13
+5;102;Magyar nyelv és irodalom;4;2026-09-03
+16;106;Biológia;1;2026-09-03
+17;104;Angol nyelv;4;2026-09-12
+13;110;Webprogramozás;2;2026-09-16
+13;101;Matematika;5;2026-09-03
+2;110;Digitális kultúra;5;2026-09-05
+22;106;Biológia;3;2026-09-13
+24;101;Matematika;3;2026-09-02
+16;102;Magyar nyelv és irodalom;3;2026-09-19
+30;102;Magyar nyelv és irodalom;4;2026-09-05
+7;106;Biológia;5;2026-09-13
+1;110;Webprogramozás;2;2026-09-16
+1;102;Magyar nyelv és irodalom;4;2026-09-02
+4;104;Angol nyelv;4;2026-09-05
+5;103;Programozás;5;2026-09-03
+22;101;Matematika;3;2026-09-03
+6;102;Magyar nyelv és irodalom;5;2026-09-19
+16;104;Angol nyelv;2;2026-09-12
+13;103;Programozás;4;2026-09-04
+5;104;Angol nyelv;4;2026-09-04
+19;106;Biológia;4;2026-09-12
+16;101;Matematika;3;2026-09-04
+5;110;Digitális kultúra;4;2026-09-16
