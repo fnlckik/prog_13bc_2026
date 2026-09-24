@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextHelperApp", "TextHelperApp\TextHelperApp.csproj", "{8FE6E101-73DB-4D8F-93AF-5FD5C735146A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextHelperApp.Tests", "TextHelperApp.Tests\TextHelperApp.Tests.csproj", "{E9BAAE43-B6A3-4579-B082-51FFAFEBFA1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FE6E101-73DB-4D8F-93AF-5FD5C735146A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE6E101-73DB-4D8F-93AF-5FD5C735146A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE6E101-73DB-4D8F-93AF-5FD5C735146A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE6E101-73DB-4D8F-93AF-5FD5C735146A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BAAE43-B6A3-4579-B082-51FFAFEBFA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BAAE43-B6A3-4579-B082-51FFAFEBFA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BAAE43-B6A3-4579-B082-51FFAFEBFA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BAAE43-B6A3-4579-B082-51FFAFEBFA1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DE4C922-B89F-4606-8BA7-54564ACD98DD}
+	EndGlobalSection
+EndGlobal
