@@ -23,6 +23,7 @@ namespace DC_Plus.Models
         public void AddEpisode(Episode ep)
         {
             if (episodes.Any(e => e.Season == ep.Season && e.EpisodeNumber == ep.EpisodeNumber)) throw new InvalidEpisodeException();
+            if (ep.SeriesId != this.Id) throw new InvalidOperationException("Nem ehhez a sorozathoz tartozik az epizód.");
             episodes.Add(ep);
         }
 

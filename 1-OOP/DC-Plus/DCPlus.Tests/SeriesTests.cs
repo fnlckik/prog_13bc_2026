@@ -1,4 +1,5 @@
-﻿using DC_Plus.Models;
+﻿using DC_Plus.Exceptions; // InvalidEpisodeException
+using DC_Plus.Models; // Series, Episode
 
 namespace DCPlus.Tests;
 
@@ -37,14 +38,75 @@ public class SeriesTests
                   seriesId: 2,
                   title: "Az Igazságosztó közbelép",
                   season: 2,
-                  episodeNumber: 7,
+                  episodeNumber: 1,
                   duration: 23,
                   releaseDate: new DateTime(1995, 11, 4));
     }
 
     [Test]
-    public void Test1()
+    public void AddEpisode_OneEpisode()
     {
-        Assert.Pass();
+        series.AddEpisode(ep1);
+        //Assert.That(series.Episodes.Count, Is.EqualTo(1));
+        Assert.That(series.Episodes, Has.Count.EqualTo(1));
+        Assert.That(series.Episodes[0], Is.EqualTo(ep1));
+    }
+
+    [Test]
+    public void AddEpisode_MultipleEpisodes()
+    {
+        series.AddEpisode(ep1); // 1. évad 1. rész false && false
+        series.AddEpisode(ep2); // 1. évad 6. rész true && false
+        series.AddEpisode(ep3); // 2. évad 1. rész false && true
+        Assert.That(series.Episodes, Has.Count.EqualTo(3));
+        Assert.That(series.Episodes, Does.Contain(ep1));
+        Assert.That(series.Episodes, Does.Contain(ep2));
+        Assert.That(series.Episodes, Does.Contain(ep3));
+    }
+
+    // Hány saját osztályt használunk ebben a tesztben? 3 db
+    // => integrációs teszt
+    [Test]
+    public void AddEpisode_DuplicateEpisode() // true && true
+    {
+        series.AddEpisode(ep1);
+        Assert.That(() => series.AddEpisode(ep1), Throws.TypeOf<InvalidEpisodeException>());
+    }
+
+    // Először írjuk meg a teszteket, majd utána csináljuk meg az implementációt.
+    // TDD: Test Driven Development
+    [Test]
+    public void AddEpisode_WrongEpisode()
+    {
+        // Az 2-es azonosítójú sorozathoz adok egy olyan epizódot
+        // ami az 1-es azonosítójú sorozathoz tartozik.
+        Episode ep = new(500, 1, "", DateTime.Now, 3, 5, 20);
+        Assert.That(() => series.AddEpisode(ep), Throws.TypeOf<InvalidOperationException>());
+    }
+
+    [Test]
+    public void Seasons_NoEpisode()
+    {
+        Assert.That(series.Seasons, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void Seasons_OneEpisode()
+    {
+        series.AddEpisode(ep1);
+        Assert.That(series.Seasons, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Seasons_MultipleEpisodes()
+    {
+        series.AddEpisodes(ep1, ep2, ep3);
+        Assert.That(series.Seasons, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void GetTotalDuration_NoEpisode()
+    {
+        Assert.That(series.GetTotalDuration(), Is.EqualTo(0));
     }
 }
