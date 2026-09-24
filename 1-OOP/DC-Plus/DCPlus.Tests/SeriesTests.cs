@@ -109,4 +109,20 @@ public class SeriesTests
     {
         Assert.That(series.GetTotalDuration(), Is.EqualTo(0));
     }
+
+    [Test]
+    public void GetTotalDuration_OneEpisode()
+    {
+        series.AddEpisode(ep1);
+        Assert.That(series.GetTotalDuration(), Is.EqualTo(ep1.Duration));
+    }
+
+    [Test]
+    public void GetTotalDuration_MultipleEpisodes()
+    {
+        series.AddEpisodes(ep1, ep2, ep3);
+        List<Episode> testList = [ep1, ep2, ep3];
+        int expected = testList.Sum(e => e.Duration);
+        Assert.That(series.GetTotalDuration(), Is.EqualTo(expected));
+    }
 }
