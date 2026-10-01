@@ -1,6 +1,7 @@
 ﻿using DC_Plus;
 using DC_Plus.Exceptions;
 using DC_Plus.Models;
+using NUnit.Framework.Internal;
 
 namespace DCPlus.Tests;
 
@@ -196,5 +197,43 @@ public class ContentServiceTests
         series.AddRating(2);
         var result = service.GetAllRatingsAverage();
         Assert.That(result, Is.EqualTo(numbers.Average()));
+    }
+
+    [Test]
+    public void GetContentCountByGenres_Test()
+    {
+        var result = service.GetContentCountByGenres();
+        Assert.That(result, Has.Count.EqualTo(2));
+        Assert.That(result["sci-fi"], Is.EqualTo(2));
+        Assert.That(result["fantasy"], Is.EqualTo(1));
+    }
+
+    [Test]
+    public void GetFilmsByViewCount_Test()
+    {
+        Film f0 = new(1, "", "", "", 1, 1, 0, "", [], 1, 1, 50);
+        Film f1 = new(1, "", "", "", 2, 1, 0, "", [], 1, 1, 99);
+        Film f2 = new(1, "", "", "", 3, 1, 0, "", [], 1, 1, 100); // T
+        Film f3 = new(1, "", "", "", 4, 1, 0, "", [], 1, 1, 101); // T
+        Film f4 = new(1, "", "", "", 5, 1, 0, "", [], 1, 1, 180); // T
+        Film f5 = new(1, "", "", "", 6, 1, 0, "", [], 1, 1, 199); // T
+        Film f6 = new(1, "", "", "", 7, 1, 0, "", [], 1, 1, 200); // T
+        Film f7 = new(1, "", "", "", 8, 1, 0, "", [], 1, 1, 201);
+        Film f8 = new(1, "", "", "", 9, 1, 0, "", [], 1, 1, 2000);
+        ContentService testService = new([f0, f1, f2, f3, f4, f5, f6, f7, f8]);
+        var result = testService.GetFilmsByViewCount(100, 200);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result, Has.Count.EqualTo(5));
+            Assert.That(result, Does.Not.Contain(f0));
+            Assert.That(result, Does.Not.Contain(f1));
+            Assert.That(result, Does.Contain(f2));
+            Assert.That(result, Does.Contain(f3));
+            Assert.That(result, Does.Contain(f4));
+            Assert.That(result, Does.Contain(f5));
+            Assert.That(result, Does.Contain(f6));
+            Assert.That(result, Does.Not.Contain(f7));
+            Assert.That(result, Does.Not.Contain(f8));
+        });
     }
 }
