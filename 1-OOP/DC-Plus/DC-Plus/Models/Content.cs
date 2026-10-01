@@ -70,5 +70,12 @@ namespace DC_Plus.Models
         {
             return Title;
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
+            Content other = (Content)obj;
+            return this.Title == other.Title && this.Duration == other.Duration && this.ReleaseYear == other.ReleaseYear;
+        }
     }
 }

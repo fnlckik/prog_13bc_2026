@@ -101,4 +101,25 @@ public class ContentTests
         Func<double> average = () => content.AverageRating;
         Assert.That(average, Throws.TypeOf<InvalidOperationException>());
     }
+
+    [Test]
+    public void AverageRating_OneRating()
+    {
+        content.AddRating(7);
+        Assert.That(content.AverageRating, Is.EqualTo(7));
+    }
+
+    [TestCase(5, 7, 8)]
+    [TestCase(1, 5, 8, 2, 3, 3, 7)]
+    public void AverageRating_MultipleRating(params int[] ratings)
+    {
+        //int[] ratings = [5, 7, 8];
+        content.AddRatings(ratings);
+        //content.AddRating(5);
+        //content.AddRating(7);
+        //content.AddRating(8);
+        //Assert.That(content.AverageRating, Is.GreaterThan(6.66));
+        //Assert.That(content.AverageRating, Is.LessThan(6.68));
+        Assert.That(content.AverageRating, Is.EqualTo(ratings.Average()));
+    }
 }

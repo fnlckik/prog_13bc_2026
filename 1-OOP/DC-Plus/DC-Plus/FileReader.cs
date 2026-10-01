@@ -1,6 +1,6 @@
 ﻿namespace DC_Plus
 {
-    internal static class FileReader
+    public static class FileReader
     {
         public static List<string> ReadLines(string path)
         {

@@ -59,5 +59,13 @@ namespace DC_Plus.Models
             film.AddRatings(ratings);
             return film;
         }
+
+        // A (Title, Director, ReleaseYear) összetett kulcs.
+        public override bool Equals(object? obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
+            Film other = (Film)obj;
+            return this.Title == other.Title && this.Director == other.Director && this.ReleaseYear == other.ReleaseYear;
+        }
     }
 }

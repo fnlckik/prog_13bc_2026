@@ -1,9 +1,8 @@
 ﻿using DC_Plus.Models;
-using System.Security.Cryptography;
 
 namespace DC_Plus
 {
-    internal partial class ContentService
+    public partial class ContentService
     {
         // Adott műfajba tartozó tartalmak listáját adja meg.
         public List<Content> GetContentsByGenre(string genre)

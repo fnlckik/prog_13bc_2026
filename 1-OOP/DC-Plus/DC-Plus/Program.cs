@@ -201,6 +201,22 @@ namespace DC_Plus
             Console.WriteLine(String.Join("\n", service.GetFirstFilmByDirectors().Select(pair => $"{pair.Key}: {pair.Value}")));
             Console.Clear();
             Console.WriteLine(String.Join("\n", service.GetFilmsByViewCount(1_000_000, 10_000_000)));
+            Console.Clear();
+
+            Film filmCopy = new(id: 1,
+                                title: "Odüsszeia",
+                                description: "Odüsszeusz hazatér",
+                                genre: "fantasy",
+                                releaseYear: 2026,
+                                duration: 174,
+                                ageLimit: 16,
+                                director: "Christopher Nolan",
+                                actors: ["Matt Damon", "Tom Holland", "Robert Pattinson"],
+                                revenue: 1350,
+                                budget: 375);
+            Console.WriteLine(film == filmCopy);
+            //Console.WriteLine(film.GetType());
+            Console.WriteLine(film.Equals(filmCopy));
         }
 
         private static void WriteFile(string s)

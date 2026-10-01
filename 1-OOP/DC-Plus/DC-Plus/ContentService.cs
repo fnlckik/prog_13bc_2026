@@ -4,7 +4,7 @@ using DC_Plus.Models;
 namespace DC_Plus
 {
     // Service réteg: üzleti logikát végzi
-    internal partial class ContentService
+    public partial class ContentService
     {
         private List<Content> contents;
 
