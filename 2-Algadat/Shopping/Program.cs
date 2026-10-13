@@ -22,7 +22,7 @@ namespace Shopping
             // ------------------------------
             // Lista szimuláció
             sw.Restart();
-            List<string> waitingList = Simulation_List(1_000_000, 1_000_000); // O(n)
+            List<string> waitingList = Simulation_List(1_000_000, 1_000); // O(n)
             sw.Stop();
             Console.WriteLine($"Idő (lista szimuláció): {sw.ElapsedTicks}");
             Console.Write("\nA végén a sorban állnak:\n\t");
@@ -66,11 +66,21 @@ namespace Shopping
             // --------------------------
             // Sor szimuláció
             sw.Restart();
-            Queue<string> waitingQueue = Simulation_Queue(1_000_000, 1_000_000); // O(n)
+            Queue<string> waitingQueue = Simulation_Queue(1_000_000, 1_000); // O(n)
             sw.Stop();
             Console.WriteLine($"Idő (sor szimuláció): {sw.ElapsedTicks}");
             Console.Write("\nA végén a sorban állnak:\n\t");
             //Console.WriteLine(string.Join("\n\t", waitingQueue));
+
+            // Tóth Loréna -> hiányzó 0-ás gomb
+            Console.Clear();
+            Q queue = new();
+            Console.WriteLine($"Sor hossza: {queue.Count}");
+            queue.Add("alma");
+            queue.Add("barack");
+            queue.Add("citrom");
+            Console.WriteLine($"Sor hossza: {queue.Count}");
+            Console.WriteLine($"Első elem: {queue.First()}");
         }
 
         private static List<string> Simulation_List(int n, int length)
