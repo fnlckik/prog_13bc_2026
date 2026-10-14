@@ -22,7 +22,7 @@ namespace Shopping
             // ------------------------------
             // Lista szimuláció
             sw.Restart();
-            List<string> waitingList = Simulation_List(1_000_000, 1_000); // O(n)
+            List<string> waitingList = Simulation_List(1_000_000, 1_000_000); // O(n)
             sw.Stop();
             Console.WriteLine($"Idő (lista szimuláció): {sw.ElapsedTicks}");
             Console.Write("\nA végén a sorban állnak:\n\t");
@@ -66,21 +66,50 @@ namespace Shopping
             // --------------------------
             // Sor szimuláció
             sw.Restart();
-            Queue<string> waitingQueue = Simulation_Queue(1_000_000, 1_000); // O(n)
+            Queue<string> waitingQueue = Simulation_Queue(1_000_000, 1_000_000);
             sw.Stop();
             Console.WriteLine($"Idő (sor szimuláció): {sw.ElapsedTicks}");
             Console.Write("\nA végén a sorban állnak:\n\t");
             //Console.WriteLine(string.Join("\n\t", waitingQueue));
 
             // Tóth Loréna -> hiányzó 0-ás gomb
-            Console.Clear();
-            Q queue = new();
+            //Console.Clear();
+            Q<string> queue = new();
             Console.WriteLine($"Sor hossza: {queue.Count}");
             queue.Add("alma");
             queue.Add("barack");
             queue.Add("citrom");
-            Console.WriteLine($"Sor hossza: {queue.Count}");
-            Console.WriteLine($"Első elem: {queue.First()}");
+            //Console.WriteLine($"Sor hossza: {queue.Count}");
+            //Console.WriteLine($"Első elem: {queue.First()}");
+            //Console.WriteLine($"Elemek: {String.Join(";", queue)}");
+            //Console.WriteLine($"Első elem kivétele: {queue.Pop()}");
+            //Console.WriteLine($"Első elem kivétele: {queue.Pop()}");
+            //Console.WriteLine($"Első elem kivétele: {queue.Pop()}");
+            //Console.WriteLine($"Sor hossza: {queue.Count}");
+
+            // Kitekintés
+            //IEnumerable<int> x = Szamok();
+            //foreach (int number in x)
+            //{
+            //    Console.Write(number + " ");
+            //}
+
+            // Szimuláció - saját sorral
+            sw.Restart();
+            Q<string> waitingQ = Simulation_Q(1_000_000, 1_000_000);
+            sw.Stop();
+            Console.WriteLine($"Idő (saját sor szimuláció): {sw.ElapsedTicks}");
+            Console.Write("\nA végén a sorban állnak:\n\t");
+        }
+
+        // yield: hozam, termés
+        // Megjegyzi az állapotot, és később, innen folytatja a végrehajtást.
+        // Valójában a yield egy IEnumerator-t ad vissza (amiből a C# készít egy IEnumerable-t)
+        private static IEnumerable<int> Szamok()
+        {
+            yield return 3;
+            yield return 1;
+            yield return 4;
         }
 
         private static List<string> Simulation_List(int n, int length)
@@ -118,6 +147,24 @@ namespace Shopping
                 {
                     //Console.WriteLine($"Távozott: {waitingList.Peek()}");
                     waitingList.Dequeue();
+                }
+            }
+            return waitingList;
+        }
+
+        private static Q<string> Simulation_Q(int n, int length)
+        {
+            Q<string> waitingList = [];
+            for (int i = 0; i < n; i++) // n szimulációs lépés
+            {
+                if (r.NextDouble() < 0.6 && waitingList.Count < length) // érkezik
+                {
+                    string name = names[r.Next(0, names.Count)]; // Ki érkezik?
+                    waitingList.Add(name);
+                }
+                if (r.NextDouble() < 0.2 && waitingList.Count > 0) // Ki távozik?
+                {
+                    waitingList.Pop();
                 }
             }
             return waitingList;
