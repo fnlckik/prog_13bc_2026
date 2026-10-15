@@ -44,12 +44,23 @@
             result.Add("Béla", Money2);
             foreach (Game game in Games)
             {
-                // Ha valamelyikük nem tudja kifizetni a tétet,
-                // akkor dobjunk InvalidOperationException-t!
+                // result["Anna"] < game.Bet || result["Béla"] < game.Bet
+                if (result.Any(kv => kv.Value < game.Bet))
+                {
+                    throw new InvalidOperationException("Nem lehetséges bajnokság.");
+                }
                 result["Anna"] -= game.Bet;
                 result["Béla"] -= game.Bet;
-                // Döntetlen játék esetén mindketten visszakapják a tétet;
-                // Egyéb esetben a győztes kapja a tét kétszeresét!
+                string winner = game.Winner;
+                if (winner == "Döntetlen")
+                {
+                    result["Anna"] += game.Bet;
+                    result["Béla"] += game.Bet;
+                }
+                else
+                {
+                    result[winner] += 2 * game.Bet;
+                }
             }
             return result;
         }
