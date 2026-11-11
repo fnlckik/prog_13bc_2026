@@ -25,8 +25,41 @@
             string? result = (i == null) ? "-" : i.ToString();
             Console.WriteLine($"5-ös elem indexe: {result}");
 
-            x = [5, 9, 11, 3, 6, 7, 2, 3, 7, 9, 8, 6];
-            Console.WriteLine($"Gyorsrendezés: {string.Join(";", QuickSort(x))}");
+            x = [5, 9, 11, 3, 6, 7, 2, 3, 7, 9, 8];
+            //Console.WriteLine($"Gyorsrendezés: {string.Join(";", QuickSort(x))}");
+            //Partition(x, 0, x.Count - 1);
+            Quick(x, 0, x.Count-1);
+            Console.WriteLine($"Szétválogatva: {string.Join(";", x)}");
+        }
+
+        // Helyben rendezés
+        static void Quick(List<int> x, int left, int right)
+        {
+            if (left >= right) return;
+            int p = Partition(x, left, right);
+            Quick(x, left, p - 1);
+            Quick(x, p + 1, right);
+        }
+
+        // Szétválogatás helyben(!)
+        // Az utolsó elem a helyén lesz.
+        // Előtte kisebbek, utána nagyobbak.
+        // Visszatér a pivot végső helyével.
+        static int Partition(List<int> x, int left, int right)
+        {
+            int i = left; // Hová kerül a pivot?
+            int pivot = x[right];
+
+            for (int j = left; j < right; j++)
+            {
+                if (x[j] < pivot)
+                {
+                    (x[i], x[j]) = (x[j], x[i]); // csere
+                    i++;
+                }
+            }
+            (x[i], x[right]) = (x[right], x[i]); // helyére kerül a pivot
+            return i;
         }
 
         static List<int> QuickSort(List<int> x)
