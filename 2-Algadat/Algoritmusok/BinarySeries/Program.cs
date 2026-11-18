@@ -6,6 +6,7 @@
 
         static void Main(string[] args)
         {
+            // 0-1 sorozatot készítünk (n hosszút)
             LinkedList<int> list = [];
             Backtrack(list);
         }
@@ -31,8 +32,12 @@
             }
         }
 
+        // 0 után nem lehet 0
+        // "101110", "0"
         static bool IsValid(LinkedList<int> list, int i)
         {
+            if (list.Count == 0) return true;
+            if (list.Last() == 0 && i == 0) return false;
             return true;
         }
 
