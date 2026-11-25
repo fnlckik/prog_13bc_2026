@@ -38,6 +38,40 @@
                                    [ 0, 5, 4, 0, 0 ],
                                    [ 0, 0, 0, 5, 0 ],
                                    [ 0, 0, 0, 4, 3 ] ];
+
+            Backtrack(s1, 0, 0);
+        }
+
+        static void Backtrack(List<List<int>> board, int i, int j)
+        {
+            bool finished = i == board.Count;
+            if (finished)
+            {
+                Show(board);
+                return;
+            }
+            for (int k = 1; k <= board.Count; k++) // Minden lehetséges számot kipróbálunk
+            {
+                if (IsValid(board, i, j, k))
+                {
+                    Step(board, i, j, k);
+                    if (j < board.Count) Backtrack(board, i, j + 1); // jobbra
+                    else Backtrack(board, i + 1, 0); // lefelé
+                    Back(board, i, j);
+                }
+            }
+        }
+
+        static void Show(List<List<int>> board)
+        {
+            foreach (var row in board)
+            {
+                foreach (var item in row)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
